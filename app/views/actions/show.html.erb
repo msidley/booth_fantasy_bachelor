@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Action #<%= @action.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Cast</dt>
+      <dd><%= @action.cast_id %></dd>
+
+      <dt>Play</dt>
+      <dd><%= @action.play %></dd>
+
+      <dt>Point value</dt>
+      <dd><%= @action.point_value %></dd>
+
+      <dt>Week</dt>
+      <dd><%= @action.week %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/actions" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/actions/<%= @action.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_action/<%= @action.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

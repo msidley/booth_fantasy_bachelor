@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @action.errors.any? %>
+  <% @action.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Action</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_action" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for cast_id -->
+      <div class="form-group">
+        <label for="cast_id" class="control-label">
+          Cast
+        </label>
+
+        <input type="text" id="cast_id" name="cast_id" placeholder="Cast" class="form-control" value="<%= @action.cast_id %>">
+      </div>
+
+      <!-- Label and input for play -->
+      <div class="form-group">
+        <label for="play" class="control-label">
+          Play
+        </label>
+
+        <textarea id="play" name="play" placeholder="Play" class="form-control" rows="3"><%= @action.play %></textarea>
+      </div>
+
+      <!-- Label and input for point_value -->
+      <div class="form-group">
+        <label for="point_value" class="control-label">
+          Point value
+        </label>
+
+        <input type="text" id="point_value" name="point_value" placeholder="Point value" class="form-control" value="<%= @action.point_value %>">
+      </div>
+
+      <!-- Label and input for week -->
+      <div class="form-group">
+        <label for="week" class="control-label">
+          Week
+        </label>
+
+        <input type="text" id="week" name="week" placeholder="Week" class="form-control" value="<%= @action.week %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Action
+      </button>
+      or
+      <a href="/actions">Cancel</a>
+    </form>
+  </div>
+</div>
