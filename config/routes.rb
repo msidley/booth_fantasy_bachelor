@@ -1,5 +1,42 @@
 Rails.application.routes.draw do
-  # Routes for the Comment resource:
+  # Routes for the Cast resource:
+  # CREATE
+  get "/casts/new", :controller => "casts", :action => "new"
+  post "/create_cast", :controller => "casts", :action => "create"
+
+  # READ
+  get "/casts", :controller => "casts", :action => "index"
+  get "/casts/:id", :controller => "casts", :action => "show"
+
+  # UPDATE
+  get "/casts/:id/edit", :controller => "casts", :action => "edit"
+  post "/update_cast/:id", :controller => "casts", :action => "update"
+
+  # DELETE
+  get "/delete_cast/:id", :controller => "casts", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Fantasy_contestant resource:
+  # CREATE
+  get "/fantasy_contestants/new", :controller => "fantasy_contestants", :action => "new"
+  post "/create_fantasy_contestant", :controller => "fantasy_contestants", :action => "create"
+
+  # READ
+  get "/fantasy_contestants", :controller => "fantasy_contestants", :action => "index"
+  get "/fantasy_contestants/:id", :controller => "fantasy_contestants", :action => "show"
+
+  # UPDATE
+  get "/fantasy_contestants/:id/edit", :controller => "fantasy_contestants", :action => "edit"
+  post "/update_fantasy_contestant/:id", :controller => "fantasy_contestants", :action => "update"
+
+  # DELETE
+  get "/delete_fantasy_contestant/:id", :controller => "fantasy_contestants", :action => "destroy"
+  #------------------------------
+
+# In config/routes.rb
+root "comments#index"
+
+# Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
   post "/create_comment", :controller => "comments", :action => "create"

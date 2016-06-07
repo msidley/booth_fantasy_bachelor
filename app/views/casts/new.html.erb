@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @cast.errors.any? %>
+  <% @cast.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Cast</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_cast" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <textarea id="name" name="name" placeholder="Name" class="form-control" rows="3"><%= @cast.name %></textarea>
+      </div>
+
+      <!-- Label and input for bio -->
+      <div class="form-group">
+        <label for="bio" class="control-label">
+          Bio
+        </label>
+
+        <textarea id="bio" name="bio" placeholder="Bio" class="form-control" rows="3"><%= @cast.bio %></textarea>
+      </div>
+
+      <!-- Label and input for cast_img -->
+      <div class="form-group">
+        <label for="cast_img" class="control-label">
+          Cast img
+        </label>
+
+        <input type="text" id="cast_img" name="cast_img" placeholder="Cast img" class="form-control" value="<%= @cast.cast_img %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Cast
+      </button>
+      or
+      <a href="/casts">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -11,11 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607165010) do
+ActiveRecord::Schema.define(version: 20160607165440) do
+
+  create_table "casts", force: :cascade do |t|
+    t.text     "name"
+    t.text     "bio"
+    t.string   "cast_img"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fantasy_contestants", force: :cascade do |t|
+    t.integer  "cast_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

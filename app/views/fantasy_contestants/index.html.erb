@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Fantasy contestants
+    <a href="/fantasy_contestants/new" class="btn btn-lg btn-success">New Fantasy contestant</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Cast</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @fantasy_contestants.each do |fantasy_contestant| %>
+      <tr>
+        <td><%= fantasy_contestant.cast_id %></td>
+        <td><%= fantasy_contestant.user_id %></td>
+        <td>
+          <a href="/fantasy_contestants/<%= fantasy_contestant.id %>" class="btn btn-primary">Show</a>
+          <a href="/fantasy_contestants/<%= fantasy_contestant.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_fantasy_contestant/<%= fantasy_contestant.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
