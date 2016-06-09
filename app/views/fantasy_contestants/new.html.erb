@@ -24,7 +24,7 @@
           Cast
         </label>
 
-        <input type="text" id="cast_id" name="cast_id" placeholder="Cast" class="form-control" value="<%= @fantasy_contestant.cast_id %>">
+        <%= select_tag(:cast_id, options_from_collection_for_select(Cast.all, :id, :name, @fantasy_contestant.cast_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
@@ -33,10 +33,11 @@
       </div>
 
       <button class="btn btn-success">
-        Create Fantasy Contestant
+        Add This Contestant
       </button>
       or
       <a href="/fantasy_contestants">Cancel</a>
     </form>
   </div>
 </div>
+<h3><%= current_user.username %> Contestant's:</h3>
