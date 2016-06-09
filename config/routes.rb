@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  # Routes for the Action resource:
+  # In config/routes.rb
+  root "comments#index"
+
+# Routes for the Action resource:
   # CREATE
   get "/actions/new", :controller => "actions", :action => "new"
   post "/create_action", :controller => "actions", :action => "create"
@@ -50,8 +53,6 @@ Rails.application.routes.draw do
   get "/delete_fantasy_contestant/:id", :controller => "fantasy_contestants", :action => "destroy"
   #------------------------------
 
-# In config/routes.rb
-root "comments#index"
 
 # Routes for the Comment resource:
   # CREATE
