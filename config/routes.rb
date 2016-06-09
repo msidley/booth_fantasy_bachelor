@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # In config/routes.rb
   root "comments#index"
-
+  devise_for :users
   # Routes for the Standing resource:
   # READ
   get "/users", :controller => "users", :action => "index"
@@ -76,7 +76,7 @@ Rails.application.routes.draw do
   get "/delete_comment/:id", :controller => "comments", :action => "destroy"
   #------------------------------
 
-  devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
