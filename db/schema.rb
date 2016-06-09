@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607165625) do
+ActiveRecord::Schema.define(version: 20160609202741) do
 
   create_table "actions", force: :cascade do |t|
     t.integer  "cast_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160607165625) do
     t.string   "user_img"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "selected_contestant"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
