@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   # In config/routes.rb
   root "comments#index"
 
+  # Routes for the Standing resource:
+  # READ
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
+
 # Routes for the Action resource:
   # CREATE
   get "/actions/new", :controller => "actions", :action => "new"
