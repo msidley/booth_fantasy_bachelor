@@ -7,5 +7,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :fantasy_contestants, :dependent => :destroy
 
+  has_many :picked_contestants, :through => :fantasy_contestants, :source => :cast
+
   validates :username, :presence => true, :uniqueness => true
 end

@@ -9,15 +9,17 @@ class FantasyContestantsController < ApplicationController
 
   def new
     @fantasy_contestant = FantasyContestant.new
+    @picked_contestants = current_user.picked_contestants.all
   end
 
   def create
     @fantasy_contestant = FantasyContestant.new
     @fantasy_contestant.cast_id = params[:cast_id]
     @fantasy_contestant.user_id = params[:user_id]
+    @fantasy_contestants = FantasyContestant.all
 
     if @fantasy_contestant.save
-      redirect_to "/fantasy_contestants", :notice => "Fantasy contestant created successfully."
+      redirect_to "/fantasy_contestants/new", :notice => "Contestant added successfully."
     else
       render 'new'
     end
@@ -45,6 +47,6 @@ class FantasyContestantsController < ApplicationController
 
     @fantasy_contestant.destroy
 
-    redirect_to "/fantasy_contestants", :notice => "Fantasy contestant deleted."
+    redirect_to "/fantasy_contestants/new", :notice => "Fantasy contestant deleted."
   end
 end
