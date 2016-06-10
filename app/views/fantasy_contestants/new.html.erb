@@ -7,7 +7,7 @@
     </div>
   <% end %>
 <% end %>
-
+<% if current_user.user_img != "true" %>
 <div class="page-header">
   <h3>Add Contestants To Your Team</h3>
 </div>
@@ -38,20 +38,46 @@
     </form>
   </div>
 </div>
+<% end %>
 <h3><%= current_user.username %> Contestant's:</h3>
+
 
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
+      <% i = 0 %>
       <% @picked_contestants.each do |picked_contestant| %>
       <tr>
+          <%i= i+1%>
         <td><%= picked_contestant.name %></td>
         <td>
           <a href="/casts/<%= picked_contestant.id %>" class="btn btn-primary">Show</a>
+          <% if current_user.user_img != "true" %>
           <a href="/delete_fantasy_contestant/<%= FantasyContestant.find_by(:cast_id => picked_contestant.id).id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
     </table>
   </div>
 </div>
+<% if current_user.user_img != "true" %>
+<% if i == 5 %>
+  <div class="row">
+    <div class="col-md-12">
+      <form action="/users/lockincontestants" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <input type="hidden" id="user_id" name="id" value="<%=current_user.id %>">
+
+        <button class="btn btn-success">
+          Lock-in Contestants
+        </button>
+      </form>
+    </div>
+  </div>
+<%end %>
+
+<h4>Five contestants must be selected to lock-in</h4>
+<% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # READ
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
-
+  post "/users/lockincontestants", :controller => "users", :action => "lockin"
 # Routes for the Action resource:
   # CREATE
   get "/actions/new", :controller => "actions", :action => "new"
