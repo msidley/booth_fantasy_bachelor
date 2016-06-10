@@ -1,21 +1,32 @@
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          All Users
-        </h3>
-      </div>
+<div class="page-header">
+  <h1>
+    Standings
+  </h1>
+</div>
 
-      <ul class="list-group">
-        <% @users.each do |user| %>
-        <li class="list-group-item">
-          <a href="/users/<%= user.id %>">
-            <%= user.username %>
-          </a>
-        </li>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Point Total</th>
+        <% if current_user.admin == true %>
+        <th>User Locked-In? (admin view only) </th>
         <% end %>
-      </ul>
-    </div>
+      </tr>
+      <% rank = 1 %>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= rank %></td>
+        <td><a href="/users/<%= user.id %>"> <%= user.username %></a></td>
+        <td><%= user.point_total %></td>
+        <% if current_user.admin == true %>
+        <td><%= user.user_img %></th>
+        <% end %>
+      </tr>
+        <% rank = rank + 1 %>
+      <% end %>
+    </table>
   </div>
 </div>
