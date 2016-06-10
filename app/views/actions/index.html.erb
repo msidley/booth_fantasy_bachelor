@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>
-    Actions
-    <a href="/actions/new" class="btn btn-lg btn-success">New Action</a>
+    Weekly Action
+    <% if current_user.admin == true %>
+    <a href="/actions/new" class="btn btn-lg btn-success">Add A New Action</a>
+    <% end %>
   </h1>
 </div>
 
