@@ -1,12 +1,59 @@
 <div class="page-header">
   <h1>
     Weekly Action
-    <% if current_user.admin == true %>
-    <a href="/actions/new" class="btn btn-lg btn-success">Add A New Action</a>
-    <% end %>
   </h1>
 </div>
+    <% if current_user.admin == true %>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/create_action" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+          <!-- Label and input for cast_id -->
+          <div class="form-group">
+            <label for="cast_id" class="control-label">
+              Cast
+            </label>
+
+            <%= select_tag(:cast_id, options_from_collection_for_select(Cast.all, :id, :name, @action.cast_id), :class => "form-control") %>
+          </div>
+
+          <!-- Label and input for play -->
+          <div class="form-group">
+            <label for="play" class="control-label">
+              Play
+            </label>
+
+            <textarea id="play" name="play" placeholder="Play" class="form-control" rows="3"><%= @action.play %></textarea>
+          </div>
+
+          <!-- Label and input for point_value -->
+          <div class="form-group">
+            <label for="point_value" class="control-label">
+              Point value
+            </label>
+
+            <input type="text" id="point_value" name="point_value" placeholder="Point value" class="form-control" value="<%= @action.point_value %>">
+          </div>
+
+          <!-- Label and input for week -->
+          <div class="form-group">
+            <label for="week" class="control-label">
+              Week
+            </label>
+
+            <input type="text" id="week" name="week" placeholder="Week" class="form-control" value="<%= @action.week %>">
+          </div>
+
+          <button class="btn btn-success">
+            Create Action
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <% end %>
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
