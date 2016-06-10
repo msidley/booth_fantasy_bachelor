@@ -24,7 +24,7 @@
           Cast
         </label>
 
-        <input type="text" id="cast_id" name="cast_id" placeholder="Cast" class="form-control" value="<%= @action.cast_id %>">
+        <%= select_tag(:cast_id, options_from_collection_for_select(Cast.all, :id, :name, @action.cast_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for play -->

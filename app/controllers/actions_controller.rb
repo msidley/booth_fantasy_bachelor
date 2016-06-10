@@ -17,8 +17,22 @@ class ActionsController < ApplicationController
     @action.play = params[:play]
     @action.point_value = params[:point_value]
     @action.week = params[:week]
-
     if @action.save
+      @users = User.all
+      @actions = Action.all
+      @users.each do |user|
+        points = 0
+        @picked_contestants = user.picked_contestants.all
+        @picked_contestants.each do |picked_contestant|
+          @actions.each do |action|
+            if picked_contestant.name == action.cast.name
+              points = points + action.point_value
+            end
+          end
+        end
+        user.point_total = points
+        user.save
+      end
       redirect_to "/actions", :notice => "Action created successfully."
     else
       render 'new'

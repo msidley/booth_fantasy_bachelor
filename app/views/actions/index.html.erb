@@ -11,23 +11,24 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Cast</th>
-        <th>Play</th>
+        <th>Contestant</th>
+        <th>What Happened?</th>
         <th>Point value</th>
         <th>Week</th>
-        <th>Actions</th>
+        <th></th>
       </tr>
 
       <% @actions.each do |action| %>
       <tr>
-        <td><%= action.cast_id %></td>
+        <td><a href="/casts/<%= action.cast_id %>"><%= action.cast.name %></td>
         <td><%= action.play %></td>
         <td><%= action.point_value %></td>
         <td><%= action.week %></td>
         <td>
-          <a href="/actions/<%= action.id %>" class="btn btn-primary">Show</a>
+        <% if current_user.admin == true %>
           <a href="/actions/<%= action.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_action/<%= action.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        <% end %>
         </td>
       </tr>
       <% end %>
